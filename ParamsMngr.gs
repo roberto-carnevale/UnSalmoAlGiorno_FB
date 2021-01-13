@@ -20,10 +20,22 @@ function setlastSentUsers(num) {
   readParams().getRange("B3").setValue(num);
 }
 
+function getTelegramSubcribers() {
+  return SpreadsheetApp.openById(SubscriberSpreadsheet).getSheetByName("Subscribers").getDataRange().getNumRows();
+}
+
+function getTwitterFollowers() {
+  return (parseInt(readParams().getRange("B5").getValue()));
+}
+
 function setFBLikes(num) {
   readParams().getRange("B6").setValue(num);
 }
 
-function getFBLikes(num) {
+function getFBLikes() {
   return (parseInt(readParams().getRange("B6").getValue()));
+}
+
+function getAllUsers() {
+  return getTelegramSubcribers()+getFBLikes()+getTwitterFollowers();
 }
