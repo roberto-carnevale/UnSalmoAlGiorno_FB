@@ -18,7 +18,7 @@ function sendVersetoFB() {
 
 
 function sendUserCount() {
-  var pot = "Ogni mattina siamo in " + getAllUsers() + " a pregare insieme sul Salmo da tutte le piattaforme!\nVisita il sito http://bit.ly/unsalmoalgiorno per saperne di più";
+  var post = "Ogni mattina siamo in " + getAllUsers() + " a pregare insieme sul Salmo da tutte le piattaforme!\nVisita il sito http://bit.ly/unsalmoalgiorno per saperne di più";
   postMessage(post);
 }
 
