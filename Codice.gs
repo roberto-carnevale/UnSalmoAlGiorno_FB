@@ -18,8 +18,13 @@ function sendVersetoFB() {
 
 
 function sendUserCount() {
-  var post = "Ogni mattina siamo in " + getAllUsers() + " a pregare insieme sul Salmo da tutte le piattaforme!\nVisita il sito http://bit.ly/unsalmoalgiorno per saperne di più";
-  postMessage(encodeURI(post));
+  try {
+    var post = "Ogni mattina siamo in " + getAllUsers() + " a pregare insieme sul Salmo da tutte le piattaforme!\nVisita il sito http://bit.ly/unsalmoalgiorno per saperne di più";
+    postMessage(encodeURI(post));
+  }
+  catch (err) {
+    MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
+  }
 }
 
 
