@@ -13,7 +13,6 @@ function getAppToken() {
   };
   var jsonResponse = JSON.parse(UrlFetchApp.fetch( url, option));
   // encoding pipe: %7C
-  Logger.log(jsonResponse.access_token.toString().replace(/\|/,'%7C'));
   return "access_token="+jsonResponse.access_token.toString().replace(/\|/,'%7C')+"&token_type=bearer";
 }
 
@@ -42,7 +41,7 @@ function postMessage(text) {
 
 
 function callFB(method, url) {
-  Logger.log(url);
+  //Logger.log(url);
   var option = {
   'method' : method,
   'muteHttpExceptions' : true,

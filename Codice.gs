@@ -1,4 +1,4 @@
-function sendVersetoFB() {
+function sendVersettoFB() {
   let verse = lastVerse();
 
   var sog = new SalmiOnGoogle();
