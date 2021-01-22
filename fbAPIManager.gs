@@ -1,7 +1,6 @@
 
 function doGet(e) {
   Logger.log(e);
-  return HtmlService.createHtmlOutput("Chiedere a kn35roby@gmail.com di eliminare i propri dati. Grazie!"+Logger.getLog());
 }
 
 function getAppToken() {
