@@ -22,9 +22,9 @@ function getMessages() {
 }
 
 function getLikes() {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count&access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count,followers_count&access_token='+fbAppToken;
   let result = callFB('get', url);
-  return JSON.parse(result).fan_count;
+  return Math.max(JSON.parse(result).fan_count,JSON.parse(result).followers_count);
 
 }
 
