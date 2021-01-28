@@ -1,7 +1,6 @@
 
 function doGet(e) {
   Logger.log(e);
-  return HtmlService.createHtmlOutput("Chiedere a kn35roby@gmail.com di eliminare i propri dati. Grazie!"+Logger.getLog());
 }
 
 function getAppToken() {
@@ -13,7 +12,6 @@ function getAppToken() {
   };
   var jsonResponse = JSON.parse(UrlFetchApp.fetch( url, option));
   // encoding pipe: %7C
-  Logger.log(jsonResponse.access_token.toString().replace(/\|/,'%7C'));
   return "access_token="+jsonResponse.access_token.toString().replace(/\|/,'%7C')+"&token_type=bearer";
 }
 
@@ -24,9 +22,9 @@ function getMessages() {
 }
 
 function getLikes() {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count&access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count,followers_count&access_token='+fbAppToken;
   let result = callFB('get', url);
-  return JSON.parse(result).fan_count;
+  return Math.max(JSON.parse(result).fan_count,JSON.parse(result).followers_count);
 
 }
 
@@ -42,7 +40,7 @@ function postMessage(text) {
 
 
 function callFB(method, url) {
-  Logger.log(url);
+  //Logger.log(url);
   var option = {
   'method' : method,
   'muteHttpExceptions' : true,
