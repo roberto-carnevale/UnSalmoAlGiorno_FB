@@ -1,3 +1,5 @@
+///TO BE CLEANED///
+
 function SalmiOnGoogle() {
   //set up tab
   this.tabData = SpreadsheetApp.openById(SalmiDBSpreadsheet).getSheetByName(SalmiDBByTypeTab);
