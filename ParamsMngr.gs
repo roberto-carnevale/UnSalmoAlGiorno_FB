@@ -47,3 +47,8 @@ function getLiturgicDay() {
 function lastVerseFull() {
   return readParams().getRange("B8").getValue();
 }
+
+
+function getWeekMsg () {
+  return readParams().getRange("B10").getValue();
+}

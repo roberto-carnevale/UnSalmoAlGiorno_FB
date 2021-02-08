@@ -24,8 +24,8 @@ function sendVersettoFB() {
 
 function sendUserCount() {
   try {
-    var post = "Ogni mattina siamo in " + getAllUsers() + " a pregare insieme, sullo stesso Salmo, da tutte le piattaforme!\nVisita il sito http://bit.ly/unsalmoalgiorno per saperne di più";
-    postMessage(encodeURI(post));
+    var post = getWeekMsg().toString().replace(/<TOT>/, sendTotalUser);
+    postMessageHappy(encodeURI(post));
   }
   catch (err) {
     MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
