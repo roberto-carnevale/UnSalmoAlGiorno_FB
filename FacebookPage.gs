@@ -1,7 +1,7 @@
 function sendVersettoFB() {
 
   let dayObj = getLiturgicDay();
-  let htmlVerse = dayColor[dayObj.color]+ " " + getDayFull().toString().replace(/###/g,"\n") +"  "+"\n\n#Preghiamo!\n";
+  let htmlVerse = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n") +"  "+"\n\n#Preghiamo!\n";
   htmlVerse += lastVerseFull().toString().replace(/###/g,"\n");
   let post = encodeURIComponent(htmlVerse);
 
