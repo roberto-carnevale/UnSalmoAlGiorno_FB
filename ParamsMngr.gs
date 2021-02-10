@@ -48,7 +48,7 @@ function lastVerseFull() {
   return readParams().getRange("B8").getValue();
 }
 //dayFull
-function getdayFull() {
+function getDayFull() {
   return readParams().getRange("B9").getValue();
 }
 
