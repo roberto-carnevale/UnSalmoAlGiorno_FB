@@ -25,25 +25,12 @@ const dayColor= {
   A:EmojiRosary
 }
 
-const dayTempo = {
-  A:EmojiCandle,
-  Q:EmojiHolyCross,
-  N:EmojiComet,
-  P:EmojiHolySpirit,
-  O:""
-}
-
-const stringsHoly = {
-  S: "nella Solennità di ",
-  F: "nella Festa di ",
-  M: "in Memoria di ",
-  N: ", oggi "
-}
-
-const stringsTempo = {
-  A: "nel tempo di Avvento ",
-  Q: "in tempo di Quaresima ",
-  P: "nel tempo Pasquale ",
-  N: "in tempo Natalizio ",
-  O: "nel tempo ordinario "
+const stringColorMailingList= {
+  G:"Oggi paramenti verdi",
+  V:"Oggi paramenti viola",
+  W:"Oggi paramenti bianchi",
+  R:"Oggi paramenti rossi",
+  S:"Oggi paramenti rosa",
+  B:"Oggi paramenti neri",
+  A:"Oggi preghiera Mariana",
 }
