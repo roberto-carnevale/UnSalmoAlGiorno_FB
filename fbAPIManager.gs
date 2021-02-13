@@ -43,10 +43,7 @@ function postMessageHappy(text) {
   callFB('post', url);
 }
 
-function postMessageWithPicture (text, tag) {
-  var file = DriveApp.getFolderById("16fgZ4yKCc2c-tOmkyuFNFU-_4Oewu4Fz").getFilesByName(tag+".jpg").next().getBlob();
-  var fileencoded = encodeURI(file.getDataAsString());
-
+function postMessageWithPicture (text, file) {
   var url= 'https://graph.facebook.com/v9.0/'+pageId+'/photos';
     var dataJSON = {
     'source': file,

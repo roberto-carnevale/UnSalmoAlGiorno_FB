@@ -21,7 +21,6 @@
 
 function postWithPicture() {
   var file = DriveApp.getFolderById("16fgZ4yKCc2c-tOmkyuFNFU-_4Oewu4Fz").getFilesByName("1102.jpg").next().getBlob();
-  var fileencoded = encodeURI(file.getDataAsString());
 
   var url= 'https://graph.facebook.com/v9.0/'+pageId+'/photos';  
 
