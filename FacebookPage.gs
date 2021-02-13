@@ -17,6 +17,28 @@ function sendVersettoFB() {
   }
 }
 
+function sendVersettoFBwithPicture() {
+  let dayObj = getLiturgicDay();
+  let htmlVerse = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n") +"\n\n#Preghiamo!\n";
+  htmlVerse += lastVerseFull().toString().replace(/###/g,"\n");
+
+  //image treatment
+  var file = null
+  let findfile = DriveApp.getFolderById(ImageFolder).getFilesByName(dayObj.special+".jpg");
+  if (findfile.hasNext()) {file=findfile.next().getBlob();}
+  else {file = DriveApp.getFolderById(ImageFolder).getFilesByName("brand.jpg").next().getBlob()}
+
+  try {
+    
+    var likes = getLikes();
+    Logger.log(likes);
+    postMessageWithPicture(htmlVerse, file);
+  }
+  catch (err) {
+    MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
+  }
+}
+
 
 function sendUserCount() {
   try {

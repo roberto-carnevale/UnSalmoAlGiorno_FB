@@ -43,6 +43,15 @@ function postMessageHappy(text) {
   callFB('post', url);
 }
 
+function postMessageWithPicture (text, file) {
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/photos';
+    var dataJSON = {
+    'source': file,
+    'message' : text,
+    'access_token': fbAppToken
+  }
+  callFBwithData ('post', url, dataJSON);
+}
 
 function callFB(method, url) {
   //Logger.log(url);
@@ -56,7 +65,16 @@ function callFB(method, url) {
   return result;
 }
 
-
+function callFBwithData(method, url, data) {
+  //Logger.log(url);
+  var option = {
+  'method' : method,
+  'muteHttpExceptions' : true,
+  'payload' : data
+  };
+  var result = UrlFetchApp.fetch(url, option);
+  return result;
+}
 
 //TO ADD FEELINGS
 ////https://developers.facebook.com/docs/graph-api/reference/v9.0/page/feed/feelings#objects
