@@ -20,7 +20,7 @@ function sendVersettoFB() {
 
 function sendUserCount() {
   try {
-    var post = getWeekMsg().toString().replace(/<TOT>/, sendTotalUser);
+    var post = getWeekMsg().toString().replace(/<TOT>/, sendTotalUser).replace(/###/g,"\n");
     postMessageHappy(encodeURI(post));
   }
   catch (err) {
