@@ -22,9 +22,9 @@ function getMessages() {
 }
 
 function getLikes() {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count&access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count,followers_count&access_token='+fbAppToken;
   let result = callFB('get', url);
-  return JSON.parse(result).fan_count;
+  return Math.max(JSON.parse(result).fan_count,JSON.parse(result).followers_count);
 
 }
 
@@ -35,6 +35,11 @@ function getMe() {
 
 function postMessage(text) {
   var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&access_token='+fbAppToken;
+  callFB('post', url);
+}
+
+function postMessageHappy(text) {
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&og_action_type_id=383634835006146&og_object_id=241047402726961&access_token='+fbAppToken;
   callFB('post', url);
 }
 
@@ -50,3 +55,16 @@ function callFB(method, url) {
   Logger.log(result);
   return result;
 }
+
+
+
+//TO ADD FEELINGS
+////https://developers.facebook.com/docs/graph-api/reference/v9.0/page/feed/feelings#objects
+//og_action_type_id=383634835006146&og_object_id=241047402726961 = Felicissimo!
+//og_action_type_id=383634835006146&og_object_id=387086391386101 = Pieno di gioia
+
+//change icon
+//og_icon_id=1561198480803111 = Bibbia
+//og_icon_id=963051530439695 = Uova di pasqua
+//og_icon_id=250821078407713 = Albero di Natale
+//og_icon_id=554424167979437 = Chiesa
