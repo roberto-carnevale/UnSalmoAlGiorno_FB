@@ -32,12 +32,12 @@ function setFBLikes(num) {
   readParams().getRange("B6").setValue(num);
 }
 
-function getFBLikes() {
+function getFacebookLikes() {
   return (parseInt(readParams().getRange("B6").getValue()));
 }
 
 function getAllUsers() {
-  return getTelegramSubcribers()+getFBLikes()+getTwitterFollowers();
+  return getTelegramSubcribers()+getFacebookLikes()+getTwitterFollowers();
 }
 
 function getLiturgicDay() {

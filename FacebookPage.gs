@@ -42,7 +42,8 @@ function sendVersettoFBwithPicture() {
 
 function sendUserCount() {
   try {
-    var post = getWeekMsg().toString().replace(/<TOT>/, sendTotalUser).replace(/###/g,"\n");
+    
+    var post = getWeekMsg().toString().replace(/<TOT>/, getAllUsers()).replace(/###/g,"\n");
     postMessageHappy(encodeURI(post));
   }
   catch (err) {
