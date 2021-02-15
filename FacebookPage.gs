@@ -19,8 +19,9 @@ function sendVersettoFB() {
 
 function sendVersettoFBwithPicture() {
   let dayObj = getLiturgicDay();
-  let htmlVerse = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n") +"\n\n#Preghiamo!\n";
-  htmlVerse += lastVerseFull().toString().replace(/###/g,"\n");
+  
+  let htmlVerse = "#Preghiamo!\n"+lastVerseFull().toString().replace(/###/g,"\n");
+  htmlVerse += "\n\n"+dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n");
 
   //image treatment
   var file = null

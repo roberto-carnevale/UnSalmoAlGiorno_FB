@@ -16,13 +16,13 @@ function getAppToken() {
 }
 
 function getMessages() {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?access_token='+encodeURI(fbAppToken);
   callFB('get', url);
 
 }
 
 function getLikes() {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count,followers_count&access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'?fields=fan_count,followers_count&access_token='+encodeURI(fbAppToken);
   let result = callFB('get', url);
   return Math.max(JSON.parse(result).fan_count,JSON.parse(result).followers_count);
 
@@ -33,13 +33,18 @@ function getMe() {
   callFB('get', url);
 } 
 
+function getMessages() {
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?access_token='+encodeURI(fbAppToken);
+  callFB('get', url);
+}
+
 function postMessage(text) {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&access_token='+encodeURI(fbAppToken);
   callFB('post', url);
 }
 
 function postMessageHappy(text) {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&og_action_type_id=383634835006146&og_object_id=241047402726961&access_token='+fbAppToken;
+  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&og_action_type_id=383634835006146&og_object_id=241047402726961&access_token='+encodeURI(fbAppToken);
   callFB('post', url);
 }
 
@@ -48,7 +53,7 @@ function postMessageWithPicture (text, file) {
     var dataJSON = {
     'source': file,
     'message' : text,
-    'access_token': fbAppToken
+    'access_token': encodeURI(fbAppToken)
   }
   callFBwithData ('post', url, dataJSON);
 }
