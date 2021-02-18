@@ -9,6 +9,7 @@ function sendVersettoFB() {
     
     var likes = getLikes();
     Logger.log(likes);
+    setFBLikes(likes);
     postMessage(post);
   }
   catch (err) {
@@ -18,6 +19,7 @@ function sendVersettoFB() {
 
 function sendVersettoFBwithPicture() {
   let dayObj = getLiturgicDay();
+
   let htmlVerse = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n") +"\n\n#Preghiamo!\n";
   htmlVerse += lastVerseFull().toString().replace(/###/g,"\n");
 
@@ -26,6 +28,7 @@ function sendVersettoFBwithPicture() {
   let findfile = DriveApp.getFolderById("16fgZ4yKCc2c-tOmkyuFNFU-_4Oewu4Fz").getFilesByName(dayObj.special+".jpg");
   if (findfile.hasNext()) {file=findfile.next().getBlob();}
   else {file = DriveApp.getFolderById("16fgZ4yKCc2c-tOmkyuFNFU-_4Oewu4Fz").getFilesByName("brand.jpg").next().getBlob()}
+
 
   try {
     
@@ -38,9 +41,12 @@ function sendVersettoFBwithPicture() {
   }
 }
 
+
+
 function sendUserCount() {
   try {
-    var post = getWeekMsg().toString().replace(/<TOT>/, sendTotalUser);
+    
+    var post = getWeekMsg().toString().replace(/<TOT>/, getAllUsers()).replace(/###/g,"\n");
     postMessageHappy(encodeURI(post));
   }
   catch (err) {
