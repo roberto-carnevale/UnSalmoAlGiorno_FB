@@ -55,3 +55,4 @@ function getDayFull() {
 function getWeekMsg () {
   return readParams().getRange("B10").getValue();
 }
+

@@ -1,0 +1,4 @@
+function selectImage(tag, defaults) {
+  
+  
+}

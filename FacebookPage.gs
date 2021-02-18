@@ -19,15 +19,16 @@ function sendVersettoFB() {
 
 function sendVersettoFBwithPicture() {
   let dayObj = getLiturgicDay();
-  
-  let htmlVerse = "#Preghiamo!\n"+lastVerseFull().toString().replace(/###/g,"\n");
-  htmlVerse += "\n\n"+dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n");
+
+  let htmlVerse = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+ "  " +dayColor[dayObj.color]+"\n" + getDayFull().toString().replace(/###/g,"\n") +"\n\n#Preghiamo!\n";
+  htmlVerse += lastVerseFull().toString().replace(/###/g,"\n");
 
   //image treatment
   var file = null
-  let findfile = DriveApp.getFolderById(ImageFolder).getFilesByName(dayObj.special+".jpg");
+  let findfile = DriveApp.getFolderById("16fgZ4yKCc2c-tOmkyuFNFU-_4Oewu4Fz").getFilesByName(dayObj.special+".jpg");
   if (findfile.hasNext()) {file=findfile.next().getBlob();}
-  else {file = DriveApp.getFolderById(ImageFolder).getFilesByName("brand.jpg").next().getBlob()}
+  else {file = DriveApp.getFolderById("16fgZ4yKCc2c-tOmkyuFNFU-_4Oewu4Fz").getFilesByName("brand.jpg").next().getBlob()}
+
 
   try {
     
@@ -39,6 +40,7 @@ function sendVersettoFBwithPicture() {
     MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
   }
 }
+
 
 
 function sendUserCount() {
