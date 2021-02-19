@@ -45,13 +45,7 @@ function postMessage(text) {
 
 function postMessageHappy(text) {
   var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&og_action_type_id=383634835006146&og_object_id=241047402726961&access_token='+encodeURI(fbAppToken);
-  callFB('post', url);
-}
-
-
-function postMessageHappy(text) {
-  var url= 'https://graph.facebook.com/v9.0/'+pageId+'/feed?message='+text+'&og_action_type_id=383634835006146&og_object_id=241047402726961&access_token='+fbAppToken;
-  callFB('post', url);
+  return callFB('post', url);
 }
 
 function postMessageWithPicture (text, file) {
@@ -61,7 +55,7 @@ function postMessageWithPicture (text, file) {
     'message' : text,
     'access_token': encodeURI(fbAppToken)
   }
-  callFBwithData ('post', url, dataJSON);
+  return callFBwithData ('post', url, dataJSON);
 }
 
 function callFB(method, url) {
