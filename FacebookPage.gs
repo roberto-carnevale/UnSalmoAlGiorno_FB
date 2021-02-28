@@ -1,3 +1,15 @@
+function getLikes() {
+  try {
+    var likes = getLikesAPI();
+    setFBLikes(likes);
+  }
+  catch (err) {
+    MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
+  }
+}
+
+
+
 function sendVersettoFB() {
 
   let dayObj = getLiturgicDay();
