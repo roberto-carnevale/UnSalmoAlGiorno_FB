@@ -1,8 +1,9 @@
 function PostLodi() {
   try {
     let dayObj = getLiturgicDay();
-    let lodi = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+"  "+dayColor[dayObj.color]+"\r\n"+getDayFull().toString().replace(/###/g,"\r\n")+"\r\n#Preghiamo\r\n\r\n";
-    lodi += lastVerseFull().toString().replace(/###/g,"\r\n");
+    let lodi = dayColor[dayObj.color]+"  "+stringColorMailingList[dayObj.color]+"  "+dayColor[dayObj.color]+"\r\n"+getDayFull().toString().replace(/###/g,"\r\n");
+    if (dayObj.text) {lodi += "\r\n" + dayObj.text.toString().replace(/###/g,"\r\n"); }
+    lodi += "\r\n\r\n#Preghiamo\r\n\r\n" + lastVerseFull().toString().replace(/###/g,"\r\n");
 
     //image treatment
     var file = null
