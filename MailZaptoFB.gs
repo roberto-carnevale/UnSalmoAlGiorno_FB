@@ -23,7 +23,7 @@ function PostLodi() {
 
 function PostCompieta() {
   try {  // gets data
-    let file = DriveApp.getFolderById(ImageFolder).getFilesByName("compieta.jpg").next().getBlob();
+    let file = DriveApp.getFolderById(ImageFolder).getFilesByName(getCompietaImage()).next().getBlob();
     let compieta = getCompietaFull().toString().replace(/###/g,"\r\n")+"\r\n\r\nBuonanotte 🛌";
 
     MailApp.sendEmail(mailZap,objZap, compieta, {inlineImages:{imageOfTheDay: file} } );

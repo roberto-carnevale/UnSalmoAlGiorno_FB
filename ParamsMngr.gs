@@ -60,3 +60,7 @@ function getWeekMsg () {
 function getCompietaFull() {
   return readParams().getRange("B11").getValue();
 }
+
+function getCompietaImage() {
+  return readParams().getRange("B12").getValue();
+}
