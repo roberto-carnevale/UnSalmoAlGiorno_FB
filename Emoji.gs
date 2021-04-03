@@ -22,7 +22,8 @@ const dayColor= {
   R:EmojiRedCricle,
   S:EmojiCandle,
   B:EmojiBlackCircle,
-  A:EmojiRosary
+  A:EmojiRosary,
+  X:""
 }
 
 const stringColorMailingList= {
@@ -33,4 +34,5 @@ const stringColorMailingList= {
   S:"Oggi paramenti rosa",
   B:"Oggi paramenti neri",
   A:"Oggi preghiera Mariana",
+  X:"Giornata aliturgica"
 }
