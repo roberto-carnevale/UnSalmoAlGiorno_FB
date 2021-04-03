@@ -32,6 +32,17 @@ function PostCompieta() {
   }
 }
 
+function PostCompietaGruppo() {
+  try {  // gets data
+    let file = DriveApp.getFolderById(ImageFolder).getFilesByName(getCompietaImage()).next().getBlob();
+    let compieta = getCompietaFull().toString().replace(/###/g,"\r\n")+"\r\n\r\nBuonanotte 🛌";
+
+    MailApp.sendEmail(mailZap_group,objZap, compieta, {inlineImages:{imageOfTheDay: file} } );
+  } catch (err) {
+    MailApp.sendEmail("kn35roby@gmail.com","Mail2FB Exception", err.toString() + "\r\n" + err.stack.toString());
+  }
+}
+
 function PostCount() {
   var messagge = getWeekMsg().toString().replace(/<TOT>/, getAllUsers()).replace(/###/g,"\r\n");
   let file = DriveApp.getFolderById(ImageFolder).getFilesByName("candele.jpg").next().getBlob();
