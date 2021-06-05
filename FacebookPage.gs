@@ -4,7 +4,7 @@ function getLikes() {
     setFBLikes(likes);
   }
   catch (err) {
-    MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
+    MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception (getLikes())", err.toString() + "\r\n" + err.stack.toString());
   }
 }
 
@@ -50,6 +50,7 @@ function sendVersettoFBwithPicture() {
   try {
     
     var likes = getLikes();
+
     var result = postMessageWithPicture(htmlVerse, file);
     MailApp.sendEmail("kn35roby@gmail.com","Facebook Result", "Likes:" + likes +"\r\n\r\nResult:\r\n"+result);
   }
@@ -61,12 +62,28 @@ function sendVersettoFBwithPicture() {
 
 function sendUserCount() {
   try {
+    var messagge = getWeekMsg().toString().replace(/<TOT>/, getAllUsers()).replace(/###/g,"\r\n");
+    let file = DriveApp.getFolderById(ImageFolder).getFilesByName("candele.jpg").next().getBlob();
     
-    var post = getWeekMsg().toString().replace(/<TOT>/, getAllUsers()).replace(/###/g,"\n");
-    postMessageHappy(encodeURI(post));
+    likes = getLikes();
+    result = postMessagewithFeelingAndPicture(messagge, file, "joyful");
+    Logger.log(result);
   }
   catch (err) {
-    MailApp.sendEmail("kn35roby@gmail.com","Facebook Exception", err.toString() + "\r\n" + err.stack.toString());
+    MailApp.sendEmail("kn35roby@gmail.com","Mail2FB Exception", err.toString() + "\r\n" + err.stack.toString());
+  }
+}
+
+function sendCompieta() {
+    try {  // gets data
+    let file = DriveApp.getFolderById(ImageFolder).getFilesByName(getCompietaImage()).next().getBlob();
+    let compieta = getCompietaFull().toString().replace(/###/g,"\r\n")+"\r\n\r\nBuonanotte 🛌";
+    
+    result = postMessagewithFeelingAndPicture(compieta, file,"asleep");
+    likes = getLikes();
+
+  } catch (err) {
+    MailApp.sendEmail("kn35roby@gmail.com","Mail2FB Exception", err.toString() + "\r\n" + err.stack.toString());
   }
 }
 
